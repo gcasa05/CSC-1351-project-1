@@ -1,10 +1,15 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Scanner;
+
 
 public class Prog01_aOrderedList {
 	public static void main(String[] args) throws FileNotFoundException {
+		aOrderedListObject = new aOrderedList();
 		GetInputFile("start");
+		GetOutputFile("nice");
+		
 	
 	}
        public static Scanner GetInputFile(String UserPrompt) throws FileNotFoundException{
@@ -20,6 +25,7 @@ public class Prog01_aOrderedList {
 
 		    if (inputFile.exists()){
 		        input = new Scanner(inputFile);
+		        
 		        isFile = true;
 		    }else {
 		    	boolean cont = false;
@@ -41,7 +47,40 @@ public class Prog01_aOrderedList {
 		}
 		return input;
 		}
-		
+       public static PrintWriter GetOutputFile(String UserPrompt) throws FileNotFoundException{
+    	   Scanner sc = new Scanner(System.in);
+   		PrintWriter input = null;
+   		boolean isFile = false;
+
+   		while (isFile == false){    
+
+   		    System.out.print("\noutput file name? ");
+   		    String fileName = sc.next();
+   		    File inputFile = new File(fileName);
+
+   		    if (inputFile.exists()){
+   		        input = new PrintWriter(inputFile);
+   		        isFile = true;
+   		    }else {
+   		    	boolean cont = false;
+   		    	Scanner inpt = new Scanner(System.in);
+   		    	String text = "";
+   		    			do{
+   		    	 System.out.printf("File specified <%s> does not exist. Would you like to continue? <Y/N>", fileName);
+   		    	 			text = inpt.next();
+   		    	 			if(text.equals("Y")||text.equals("y")) {
+   		    	 				cont = true;
+   		    	 			}
+   		    	 			else {
+   		    	 				System.out.print("ok, search terminated");
+   		    	 				isFile = true;
+   		    	 				cont = true;
+   		    	 			}
+   		    			}while(cont == false);
+   		    }            
+   		}
+   		return input;
+       }
 		
 		
 		
