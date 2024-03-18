@@ -2,11 +2,21 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Scanner;
-
+/**
+* <Class description> 
+*
+* CSC 1351 Programming Project No <enter project number here>
+7
+* Section <insert your section number here>
+*
+* @author <insert your name here>
+* @since <insert due date here>
+*
+*/
 
 public class Prog01_aOrderedList {
 	public static void main(String[] args) throws FileNotFoundException {
-		aOrderedListObject = new aOrderedList();
+		aOrderedList = new aOrderedList();
 		GetInputFile("start");
 		GetOutputFile("nice");
 		
@@ -15,7 +25,8 @@ public class Prog01_aOrderedList {
        public static Scanner GetInputFile(String UserPrompt) throws FileNotFoundException{
 		Scanner sc = new Scanner(System.in);
 		Scanner input = null;
-		boolean isFile = false;
+		boolean isFile = false, filefound =false;
+		
 
 		while (isFile == false){    
 
@@ -24,7 +35,28 @@ public class Prog01_aOrderedList {
 		    File inputFile = new File(fileName);
 
 		    if (inputFile.exists()){
+		    	
 		        input = new Scanner(inputFile);
+		        
+		        do{
+		        	String firstlet, make;
+		        	int year, price, delete;
+		        	firstlet = input.next();
+		        	
+		        	if(firstlet.equals('A')) {
+		        		make = input.next();
+		        		year = input.nextInt();
+		        		price =input.nextInt();
+		        		car newCar = new car(make,year, price)
+		        				;
+								aOrderedList.add(newCar);
+								input.nextLine();
+		        	}else if(firstlet.equals('D')) {
+		        		delete = input.nextInt();
+		        		aOrderedList.remove(delete);
+		        	}
+		        		
+		        	}while(input.next() != null);
 		        
 		        isFile = true;
 		    }else {
@@ -60,6 +92,8 @@ public class Prog01_aOrderedList {
 
    		    if (inputFile.exists()){
    		        input = new PrintWriter(inputFile);
+   		        System.out.printf("\nNumber of Cars");
+   		        
    		        isFile = true;
    		    }else {
    		    	boolean cont = false;
