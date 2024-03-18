@@ -3,9 +3,9 @@ import java.util.Arrays;
 public class aOrderedList {
 	final int SIZEINCREMENTS = 20; 
 	
-	private car[] oList; 
+	private static car[] oList; 
 	private int listSize; 
-	private int numObjects;
+	private static int numObjects;
 	
 	public aOrderedList() {
 		this.numObjects = 0;
@@ -30,7 +30,7 @@ public class aOrderedList {
 			
 		
 	}
-	public void remove(int index) {
+	public static void remove(int index) {
 		car[] temp = new car[oList.length];//I don't know format
 	    for(int i = 0; i<oList.length; i++) {
 	        if(i != index)
@@ -45,7 +45,7 @@ public class aOrderedList {
 	
 	
 	
-	public void add(car newCar) {
+	public static void add(car newCar) {
 		oList[numObjects] = newCar;
 		numObjects ++; 
 		if(numObjects == oList.length) {
